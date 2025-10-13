@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Super-Resolution Enhancer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #bdc3c7;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        input[type="file"]:hover {
+            border-color: #3498db;
+            background-color: #ecf0f1;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        #loader {
+            display: none;
+            margin-top: 1.5rem;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Super-Resolution Enhancer 🔍</h1>
+        <p>Upload a low-resolution image, and let AI enhance its quality.</p>
+
+        <form id="upload-form" action="/enhance" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br>
+            <button type="submit" class="submit-btn">Enhance Image</button>
+        </form>
+
+        <div id="loader">
+            <div class="spinner"></div>
+            <p>Enhancing image... Please wait.</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        form.addEventListener('submit', () => {
+            document.getElementById('loader').style.display = 'block';
+            form.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
